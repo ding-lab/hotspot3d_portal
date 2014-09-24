@@ -1,0 +1,372 @@
+@import '../lib/bootstrap-3.1.0/dist/css/bootstrap.min.css';
+@import '../lib/bootstrap-3.1.0/less/mixins.less';
+@import 'fonts.less';
+
+/*
+ *  HOTSPOT COLORS
+ */
+
+@hsBlue: #07AAE3;
+@hsBlue2: #94D7EF;
+@hsOrange: #F68F37;
+@hsGreen: #33B358;
+@hsGrey: #91A0A9;
+@hsDarkGrey: #323232;
+@hsContentBg: #EFEFEF;
+@hsBodyBg: #444444;
+
+/*
+ *  BOOTSTRAP OVERRIDES
+ */
+
+// force fixed width (not sure yet how JSMOL's canvas viewer will handle responsiveness)
+
+html, body {
+  margin-top: 0;
+  padding-top: 0;
+  background-color: @hsBodyBg;
+}
+
+
+
+/*
+ *  BASIC LAYOUT
+ */
+
+.jumbotron {
+  border-radius: 0 !important;
+}
+
+.home .jumbotron {
+  position: relative;
+  height: 200px;
+  background-image: url("../img/home_header.jpg");
+  background-position: top left;
+  margin-bottom: 0;
+
+  #home-link {
+    display: block;
+    position:absolute;
+    top: 87px;
+    left: 27px;
+    width: 540px;
+    height: 90px;
+  }
+}
+
+.sub .jumbotron {
+  position: relative;
+  height: 120px;
+  background-image: url("../img/sub-header.jpg");
+  background-position: top left;
+  margin-bottom: 0;
+
+  #home-link {
+    display: block;
+    position:absolute;
+    top: 30px;
+    left: 30px;
+    width: 390px;
+    height: 65px;
+  }
+}
+
+/*
+ * WELLS
+ */
+
+.well-text {
+  padding: 15px;
+  margin-top: 1em;
+}
+
+.well-table {
+  .clearfix();
+  background-color: #FFF;
+  margin-top: 1em;
+  border-radius: 8px;
+}
+
+.well-form {
+  .clearfix();
+  background-color: #FFF;
+  padding: 0 15px 0 15px;
+  margin-top: 1em;
+  border-radius: 8px;
+}
+
+/*
+ * TABLES
+ */
+
+#tcga-list {
+
+  td, th {
+    background-color: #FFF !important;
+  }
+
+  th {
+    font-weight: normal;
+    font-style: oblique;
+  }
+
+  td.title {
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+}
+
+#singlecancer-list,
+#search-results {
+  width: 100%;
+  border-top: 2px solid @hsGrey;
+  border-bottom: 2px solid @hsGrey;
+  tbody {
+    tr {
+      cursor: pointer;
+    }
+    tr:hover td {
+      background-color: lighten(@hsBlue, 30%);
+    }
+  }
+}
+
+#search-results {
+  th {
+    background-color: darken(@hsContentBg, 10%);
+  }
+  td {
+    background-color: lighten(@hsContentBg, 20%);
+  }
+}
+
+.mut-table {
+  width: 100%;
+  border-bottom: 2px solid @hsGrey;
+}
+
+.mut-table-header {
+  .clearfix();
+  margin-top: 15px;
+  padding-left: .5em;
+  h4 { font-weight: bold; }
+  .mut-info { font-weight: normal; font-size: 90%; }
+}
+
+.mut-table-header.category-1 {
+  border-bottom: 2px solid @hsGreen;
+  color: darken(@hsGreen, 20%);
+  background-color: lighten(@hsGreen, 30%);
+}
+
+.mut-table-header.category-2 {
+  border-bottom: 2px solid @hsOrange;
+  color: darken(@hsOrange, 20%);
+  background-color: lighten(@hsOrange, 20%);
+}
+
+
+// categorized table headers
+tr.categorized {
+  border-bottom: none;
+
+  th.category-btn {
+    border-color: @hsContentBg;
+  }
+
+  // th that spans several columns (one per category)
+  th.category-1, .category-2, .category-3 {
+    text-align: center;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    font-size: 150%;
+  }
+  th.category-1 {
+    border-bottom-color: @hsGreen;
+    color: darken(@hsGreen, 20%);
+    background-color: lighten(@hsGreen, 30%);
+  }
+  th.category-2 {
+    border-bottom-color: @hsOrange;
+    color: darken(@hsOrange, 20%);
+    background-color: lighten(@hsOrange, 20%);
+  }
+
+  th.category-3 {
+    border-bottom-color: @hsGrey;
+    color: #333;
+  }
+
+  // th single columns (multiple per category)
+  th.category-item-1, .category-item-2, .category-item-3, .category-item-btn {
+    border-bottom-style: solid;
+  }
+
+  th.category-item-btn {
+    border-bottom-color: @hsContentBg;
+  }
+
+  th.category-item-1 {
+    border-bottom-color: @hsGreen;
+    background-color: lighten(@hsGreen, 30%) !important;
+  }
+
+  th.category-item-2 {
+    border-bottom-color: @hsOrange;
+    background-color: lighten(@hsOrange, 20%) !important;
+  }
+
+  th.category-item-3 {
+    border-bottom-color: @hsGrey;
+    background-color: lighten(@hsGrey, 20%) !important;
+  }
+
+  // tr table cells
+  td.category-item-1, td.category-item-2, td.category-item-3 {
+    border-bottom: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: @hsContentBg;
+    vertical-align: middle;
+  }
+
+  td.category-item-btn {
+    border-color: @hsContentBg;
+  }
+
+  td.category-item-1 {
+    background-color: lighten(@hsGreen, 40%);
+  }
+
+  td.category-item-2 {
+    background-color: lighten(@hsOrange, 20%);
+  }
+
+  td.category-item-3 {
+    background-color: lighten(@hsGrey, 30%);
+  }
+}
+
+// DATATABLES styles
+
+.dataTables_filter {
+  float: left;
+  margin: .5em 0 0 0;
+}
+
+.dataTables_info {
+  float: right;
+  margin: .5em;
+}
+
+/*
+ * LISTS
+ */
+
+
+/*
+ *  NAVBAR
+ */
+
+.navbar {
+  border-radius: 0;
+  border-image-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+  background-color: @hsContentBg;
+  margin-bottom: 0;
+  border-bottom: 5px solid @hsBlue;
+
+  .active > a, a:hover {
+    padding-bottom: 10px;
+    border-bottom: 5px solid @hsOrange;
+  }
+}
+
+/*
+ *  CONTENT
+ */
+.content {
+  .clearfix();
+  padding-bottom: 15px;
+  background-color: @hsContentBg;
+}
+
+.footer {
+  .clearfix();
+  margin-bottom: 15px;
+  padding: 15px 0 15px 0;
+  background-color: @hsDarkGrey;
+  border-top: 5px solid @hsOrange;
+
+  p {
+    text-align: right;
+    color: #EFEFEF;
+  }
+}
+
+
+/*
+ * JSMOL-VIEWER
+ */
+#jsmolviewer {
+  position: relative;
+  border-bottom: 5px solid @hsBlue;
+  height: 550px;
+  width: auto;
+  margin: 0;
+  background-color: darken(@hsContentBg, 40%);
+  resize: both;
+  overflow:hidden;
+}
+
+#jsmol-controls {
+  .clearfix();
+  margin: 0;
+  background-color: darken(@hsContentBg, 10%);
+  border-bottom: 1px solid darken(@hsContentBg, 30%);
+
+    label {
+      font-weight: normal;
+    }
+    p {
+      margin: 0;
+      padding: 0;
+      line-height: 2em;
+    }
+
+}
+
+#jsmol-sample-info {
+  .clearfix();
+  padding: 5px 0;
+  background-color: lighten(@hsBlue, 40%);
+  border-bottom: 1px solid @hsBlue;
+
+  h2 {
+    margin: 0;
+    color: darken(@hsBlue, 25%);
+  }
+
+
+  .cancer-data {
+    padding-top: .5em;
+  }
+
+  p {
+    color: darken(@hsBlue, 20%);
+    margin: 0;
+    .lbl {
+      font-weight: bold;
+    }
+
+    .value {
+
+    }
+
+  }
+
+}
+
+.content-text {
+  margin-top: 15px;
+}

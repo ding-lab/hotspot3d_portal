@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.wustl.genome</groupId>
+    <artifactId>hostpot3d</artifactId>
+    <version>1.0-alpha</version>
+    <packaging>war</packaging>
+
+    <url>http://hotspot3d.genome.wustl.edu/</url>
+
+
+    <build>
+        <finalName>HotSpot3D</finalName>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <webXml>web/WEB-INF/web.xml</webXml>
+                </configuration>
+            </plugin>
+
+        </plugins>
+
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.24</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>deploy-localhost</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.tomcat.maven</groupId>
+                        <artifactId>tomcat7-maven-plugin</artifactId>
+                        <version>2.2</version>
+
+                        <configuration>
+                            <url>http://localhost:8080/manager/text</url>
+                            <server>localhost</server>
+                            <path>/hotspot3d</path>
+                        </configuration>
+                    </plugin>
+
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>deploy-linus22251</id>
+
+            <build>
+                <plugins>
+
+                    <plugin>
+                        <groupId>org.apache.tomcat.maven</groupId>
+                        <artifactId>tomcat7-maven-plugin</artifactId>
+                        <version>2.2</version>
+
+                        <configuration>
+                            <url>http://linus2251:8080/manager/text</url>
+                            <server>linus2251</server>
+                            <path>/</path>
+                        </configuration>
+                    </plugin>
+
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>deploy-jrebel-localhost</id>
+
+            <build>
+                <plugins>
+
+                    <plugin>
+                        <groupId>org.apache.tomcat.maven</groupId>
+                        <artifactId>tomcat7-maven-plugin</artifactId>
+                        <version>2.2</version>
+
+                        <configuration>
+                            <url>http://localhost:8080/manager/text</url>
+                            <server>localhost</server>
+                            <path>/hotspot3d</path>
+                        </configuration>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.zeroturnaround</groupId>
+                        <artifactId>jrebel-maven-plugin</artifactId>
+                        <version>1.1.5</version>
+                        <executions>
+                            <execution>
+                                <id>generate-rebel-xml</id>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>generate</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+
+                        <configuration>
+                            <packaging>war</packaging>
+                            <classpath>
+                                <fallback>default</fallback>
+                                <resources>
+                                    <resource>
+                                        <!--
+                                          Empty resource element marks default configuration. By
+                                          default it is placed first in generated configuration.
+                                        -->
+                                    </resource>
+                                </resources>
+                            </classpath>
+
+                            <web>
+                                <resources>
+                                    <resource>
+                                        <target>jsp/</target>
+                                        <directory>src/main/webapp/jsp</directory>
+                                    </resource>
+                                </resources>
+                            </web>
+
+                        </configuration>
+                    </plugin>
+
+                </plugins>
+            </build>
+        </profile>
+
+    </profiles>
+
+</project>

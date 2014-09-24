@@ -1,0 +1,9 @@
+
+wget http://www.rcsb.org/pdb/files/3AZG.pdb.gz
+wget http://www.rcsb.org/pdb/files/3AFA.pdb.gz
+
+
+http://linus2251:8080/tgi-java-webapp/jsp/portal.jsp?rowkey=1418
+http://linus2251:8080/tgi-java-webapp/jsp/portal.jsp?rowkey=1407
+
+

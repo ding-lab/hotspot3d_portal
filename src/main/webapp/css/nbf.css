@@ -1,0 +1,75 @@
+/* CSS Document */
+
+body {
+ 
+		background-color:#FFFFFF;
+		margin: 0px;
+		scrollbar-arrow-color: #FF0000;
+		scrollbar-base-color: #CC99CC;
+		font-family:Arial, Helvetica, sans-serif ;
+		font-size:12px;
+		
+		}
+td	{
+       font-family:Arial, Helvetica, sans-serif;
+	   font-size:9px;
+	   }
+th	{
+		font-family:Arial, Helvetica, sans-serif;
+		font-size:9px;
+		}
+
+.t_red {
+	color: #ff0000;
+	font-size: 12px;
+	text-decoration: none;
+}
+
+
+a:link {
+	font-size: 12px;
+	color: #1C0C93;
+	text-decoration: underline;
+	font-family: "Arial", "Helvetica", "sans-serif";
+	line-height: 18px;
+
+}
+a:visited {
+	font-size: 12px;
+	color: #1C0C93;
+	text-decoration: underline;
+	line-height: 18px;
+	font-family: "Arial", "Helvetica", "sans-serif";
+
+
+}
+a:hover {
+	font-size: 12px;
+	color: #FF0000;
+	text-decoration: underline;
+	font-family: "Arial", "Helvetica", "sans-serif";
+	line-height: 18px;
+
+}
+a:active {
+	font-size: 12px;
+	color: #1C0C93;
+	text-decoration: underline;
+	font-family: "Arial", "Helvetica", "sans-serif";
+	line-height: 18px;
+
+}
+a.menu:link {
+	font-size: 12px;
+	color: #FFFFFF;
+	text-decoration: none;
+	line-height: 18px;
+}
+
+a.menu:visited {
+	font-size: 12px;
+	color: #FFFFFF;
+	text-decoration: none;
+	line-height: 18px;
+}
+
